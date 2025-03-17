@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/74c0b2949d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="/css/index.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <title>FITNess</title>
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <ul>
+                <li class="list active">
+                    <a  onclick="scrollToSection('dashboard')">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('exersice')">
+                        <span class="icon"><ion-icon name="bicycle-outline"></ion-icon></span>
+                        <span class="text">Exercise</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('workout')">
+                        <span class="icon"><ion-icon name="barbell-outline"></ion-icon></span>
+                        <span class="text">workout</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('Contact')">
+                        <span class="icon"><ion-icon name="card-outline"></ion-icon></span>
+                        <span class="text">about</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('contact')">
+                        <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+                        <span class="text">contact</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+    </header>
+    <section class="dashboard" id="dashboard">
+        <div class="avathar">
+            <p> <img src="/css/img/3d-illustration-person-with-sunglasses_23-2149436188.avif" alt=""> Welcome {{msg}}</p>
+        </div>
+        <form action="/aruth/search" method="post">
+            <input type="text" placeholder="Search By date ex.yyyy-mm-dd" name="search" required="">
+            <button><i class="fa fa-search"></i></button> 
+        </form>
+        <div class="output1">
+            <h4>Total exersice time</h4>
+            {{#each out}}
+            <p>{{this.hour}}:{{this.min}}:{{this.sec}}</p>
+            {{/each}}
+        </div>
+        <div class="output2">
+            <h4>Total workout time</h4>
+            {{#each out1}}
+            <p>{{this.hour}}:{{this.min}}:{{this.sec}}</p>
+            {{/each}}
+        </div>
+        <div class="output3">
+            <h4>Calories Burned using Exersice</h4>
+            {{#each sum}}
+            <p>{{this.sum_calories}}</p>
+            {{/each}}
+        </div>
+        <div class="output4">
+            <h4>Calories Burned using Workout</h4>
+            {{#each sum1}}
+            <p>{{this.sum_calories}}</p>
+            {{/each}}
+        </div>
+        <div class="result">
+            <div class="table1">
+                <table>
+                    <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Exercise Name</td>
+                    <td>Starting Time</td>
+                    <td>Total Time</td>
+                    <td>Calories Burned</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each ser}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.exersice_name}}</td>
+                        <td>{{this.starting_time}}</td></td>
+                        <td>{{this.total_time}}</td>
+                        <td>{{this.calories}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+                </table>
+            </div>
+            <div class="table2">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Workout Name</td>
+                            <td>Starting Time</td>
+                            <td>Total Time</td>
+                            <td>Steps</td>
+                            <td>Calories Burned</td>
+                        </tr>
+                    </thead>
+                     <tbody>
+                        {{#each ser1}}
+                            <tr>
+                                <td>{{this.id}}</td>
+                                <td>{{this.workout_name}}</td>
+                                <td>{{this.starting_time}}</td>
+                                <td>{{this.total_time}}</td>
+                                <td>{{this.steps}}</td>
+                                <td>{{this.calories}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+     </section>
+
+
+
+    <section class="exersice" id="exersice">
+        <h2>Track Your Exersice here :)</h2>
+        <p><a href="/add" class="add">Add record</a></p>
+        <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Exercise Name</td>
+                    <td>Date</td>
+                    <td>Starting Time</td>
+                    <td>Total Time</td>
+                    <td>Calories Burned</td>
+                    <td>Edit</td>
+                    <td>Delect</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each result}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.exersice_name}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.starting_time}}</td></td>
+                        <td>{{this.total_time}}</td>
+                        <td>{{this.calories}}</td>
+                        <td><a class="edit" href="/aruth/edit/{{this.id}}">Edit</a></td>
+                        <td><a class="delete" onclick="return confirm('Are you sure you want to delete')" href="/aruth/delete/{{this.id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        </div>
+    </section>
+    <section class="exersice" id="workout">
+        <h2>Track Your workout here :)</h2>
+        <p><a href="/addwork" class="add">Add record</a></p>
+        <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Workout Name</td>
+                    <td>Date</td>
+                    <td>Starting Time</td>
+                    <td>Total Time</td>
+                    <td>Total Steps</td>
+                    <td>Calories Burned</td>
+                    <td>Edit</td>
+                    <td>Delect</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each result1}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.workout_name}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.starting_time}}</td>
+                        <td>{{this.total_time}}</td>
+                        <td>{{this.steps}}</td>
+                        <td>{{this.calories}}</td>
+                        <td><a class="edit" href="/aruth/editwork/{{this.id}}">Edit</a></td>
+                        <td><a class="delete" onclick="return confirm('Are you sure you want to delete')" href="/aruth/deletework/{{this.id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        </div>
+    </section>
+    <section id="Contact">
+        <div class="wapper">
+            <div class="static-text">We are </div>
+            <ul class="dynamic-text">
+                <li><span> THARUN D V</span></li>
+                <li><span> VAISHAL A S</span></li>
+                <li><span> AJITH KUMAR K K</span></li>
+            </ul>
+        </div>
+        <div class="per1">
+        <h4>Tharun D V</h4>
+        <a href="mailto:vaishalsureshkumar22@gmail.com">Mail</a>
+       <i class="fa-regular fa-envelope" style="font-size: 36px;"></i>
+        <a href="https://www.linkedin.com/in/tharun-dv/">Linkedin</a>
+        <i class="fa fa-linkedin" style="font-size:36px"></i>
+        <a href="https://github.com/THARUN-DV">Github</a>
+        <i class="fa fa-github" style="font-size: 36px;"></i>
+    </div>
+    <div class="per2">
+        <h4>Vaishal A S</h4>
+        <a href="mailto:vaishalsureshkumar22@gmail.com">Mail</a>
+       <i class="fa-regular fa-envelope" style="font-size: 36px;"></i>
+        <a href="https://www.linkedin.com/in/vaishal-as/">Linkedin</a>
+        <i class="fa fa-linkedin" style="font-size:36px"></i>
+        <a href="https://github.com/vaishal-as">Github</a>
+        <i class="fa fa-github" style="font-size:36px"></i>
+    </div>
+    <div class="per3">
+        <h4>Ajith Kumar K K</h4>
+        <a href="mailto:vaishalsureshkumar22@gmail.com">Mail</a>
+       <i class="fa-regular fa-envelope" style="font-size: 36px;"></i>
+        <a href="#">Linkedin</a>
+        <i class="fa fa-linkedin"  style="font-size:36px"></i>
+        <a href="#">Github</a>
+        <i class="fa fa-github" style="font-size:36px"></i>
+    </div>
+   </section>
+   <section class="contact" id="contact">
+            <div class="us">
+                <div class="sample">
+                    <h2>Get In touch</h2>
+                </div>
+                <div class="box">
+                    <div class="contact-form">
+                        <h3>Send A Message</h3>
+                        <form action="/aruth/send" method="post">
+                            <div class="formbox">
+                                <div class="row50">
+                                    <div class="inputbox">
+                                        <span>Username</span>
+                                        <input type="text" placeholder="Your Username In the website" id="name" name="name">
+                                    </div>
+                                    <div class="inputbox">
+                                        <span>Mobile</span>
+                                        <input type="text" placeholder="+91 9500546628" id="phone" name="phone">
+                                    </div>
+            
+                                    <div class="inputbox">
+                                        <span>Message</span>
+                                        <textarea placeholder="Write Your Message" id="message" name="message"></textarea>
+                                    </div>
+                                    <div class="submit">
+                                        <button onclick="sendmail()">Send</button>
+                                    </div>
+
+                                </div>
+                                    <div class="second">
+                                        <div class="inputbox">
+                                            <span>Last Name</span>
+                                            <input type="text" placeholder="Ex. Peter" id="sname" name="sname">
+                                        </div>
+                                        <div class="inputbox">
+                                            <span>Your Email</span>
+                                            <input type="email" placeholder="Ex. JohnPeter@gmail.com" id="email" name="email">
+                                        </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Info</h3>
+                        <div class="infobox">
+                            <span><ion-icon name="location-outline"></ion-icon></span>
+                            <p>BIT,SATHY,TAMIL NADU</p>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="mail-open-outline"></ion-icon></span>
+                            <a href="mailto:vaishalsureshkumar22@gmail.com">vaishalsureshkumar22@gmail.com</a>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="logo-linkedin"></ion-icon></span>
+                            <a href="https://www.linkedin.com/in/vaishal-as">Linkedin</a>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="logo-github"></ion-icon></span>
+                            <a href="https://github.com/vaishal-as">Github</a>
+                        </div>  
+                        <div class="infobox">
+                            <span><ion-icon name="call-outline"></ion-icon></span>
+                            <a href="tel:+919787423600">+919787423600</a>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.7398735537813!2d77.2726179749437!3d11.498679288697446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba921f77ec45de1%3A0x80bb28a281f91227!2sBannari%20Amman%20Institute%20of%20Technology%20-%20College%20Staff%20Quarters!5e0!3m2!1sen!2sin!4v1687793448372!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+</body>
+<script>
+         const list=document.querySelectorAll('.list');
+        function activatelink(){
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');   
+        }
+        list.forEach((item) => item.addEventListener('click',activatelink));
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>

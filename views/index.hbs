@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <script src="https://kit.fontawesome.com/74c0b2949d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="/css/index.js"></script> 
+</head>
+<body>
+        <header>
+            <i class="fa fa-dumbbell"></i>
+            <p>FITNess</p>
+            <div class="navigation">
+            <ul>
+                <li class="list active">
+                    <a  onclick="scrollToSection('cont')">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('about')">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <span class="text">About</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a onclick="scrollToSection('contact')">
+                        <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+                        <span class="text">Contact</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        </header>
+    <!--Home-->
+        <section class="container" id="cont">
+            <div class="result">
+            {{#if msg}}
+            <p class="{{msg_type}}">{{msg}}</p>
+            {{/if}}
+            </div>
+        <div class="content-box" id="container">
+            <img src="/css/img/image.SVG">
+            <h1>“Continuous improvement is</h1>
+            <h3>better than delayed perfection.”</h3>
+            <h2>Start Your Session with us</h2>
+            <button id="toggle" class="toggle" onclick="popup();">Join Us</button>
+        </div>
+        <div class="login" id="login">
+            <div class="form-container">
+                <div class="signin-signup">
+                    <form action="/aruth/login" method="post" class="signin-form">
+                        <h1 class="title">Signin</h1>
+                        <div class="input-feild">
+                            <i class="fa fa-user"></i>
+                            <input type="text" name="username" id="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-feild">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <input type="submit" value="Login" class="btn solid">
+                        <p class="social-text">Or sign in with social platform</p>
+                        <div class="social-media">
+                            <a href="" class="fa fa-facebook"></a>
+                            <a href="" class="fa fa-instagram"></a>
+                            <a href="" class="fa fa-linkedin"></a>
+                            <a href="" class="fa fa-google"></a>
+                        </div>
+                    </form>
+
+                    <form action="/aruth/register" method="post" class="signup-form">
+                        <h1 class="title">Sign Up</h1>
+                        <div class="input-feild">
+                            <i class="fa fa-user"></i>
+                            <input type="text" name="username" id="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-feild">
+                            <i class="fa fa-envelope"></i>
+                            <input type="email" name="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-feild">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <input type="submit" value="Sign Up" class="btn solid">
+                        <p class="social-text">Or sign Up with social platform</p>
+                        <div class="social-media">
+                            <a href="" class="fa fa-facebook"></a>
+                            <a href="" class="fa fa-instagram"></a>
+                            <a href="" class="fa fa-linkedin"></a>
+                            <a href="" class="fa fa-google"></a>
+                        </div>
+                    </form>
+                </div>
+                <button class="fa fa-close" onclick="popupc();"></button>
+            </div>
+            <div class="panels-container">
+                <div class="left-panel">
+                    <div class="content">
+                            <h3>New Here?</h3>
+                            <p>Come and join our community.
+                                Let's set up your account</p>
+                            <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+                    </div>
+                    <img src="/css/img/signin.svg">
+                </div>
+                <div class="right-panel">
+                    <div class="content">
+                            <h3>Have an account?</h3>
+                            <p>Continue to join our community.Login using your account</p>
+                            <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                    </div>
+                    <img src="/css/img/exersice.svg">
+                </div>
+            </div>
+        </div>
+        </section>
+    <!--Home-->
+
+    <!--About-->
+        <section class="about" id="about">
+            <img src="/css/img/center.svg" class="workout">
+            <div class="controls">
+            <i class="fa fa-angle-left"></i>
+            <p>Hover to view</p>
+            </div>
+            <div class="information">
+                <span></span>
+                <span></span>
+                <span></span>   
+                <div class="circle">
+                    <h2>About Our Product</h2>   
+                    <div class="features one">
+                        <img src="/css/img/pic1.svg">
+                       <p>With Workout Tracker, you can easily create and</p>
+                       <p>and manage personalized workout plans</p>
+                    </div>
+                    <div class="features two">
+                        <img src="/css/img/pic2.svg">
+                        <p>add exercises, and track your performance in real-time.</p>
+                    </div>
+                    <div class="features three">
+                        <img src="/css/img/pic3.svg">
+                        <p>Privacy and security are our top prioritiesd</p>
+                        <p>Your personal data is encrypted.</p>
+                    </div>
+                    <div class="features four">
+                        <img src="/css/img/pic4.svg">
+                        <p>Ready to take your fitness to the next level?</p>
+                        <p>Join Workout Tracker today!!!</p>
+                        <a href="">Join Now</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    <!--contact-->
+        <section class="contact" id="contact">
+            <div class="us">
+                <div class="sample">
+                    <h2>Get In touch</h2>
+                </div>
+                <div class="box">
+                    <div class="contact-form">
+                        <h3>Send A Message</h3>
+                        <form>
+                            <div class="formbox">
+                                <div class="row50">
+                                    <div class="inputbox">
+                                        <span>First Name</span>
+                                        <input type="text" placeholder="Ex. John">
+                                    </div>
+                                    <div class="inputbox">
+                                        <span>Mobile</span>
+                                        <input type="text" placeholder="+91 9500546628">
+                                    </div>
+                                    <div class="inputbox">
+                                        <span>Message</span>
+                                        <textarea placeholder="Write Your Message"></textarea>
+                                    </div>
+                                    <div class="submit">
+                                        <button>Send</button>
+                                    </div>
+
+                                </div>
+                                    <div class="second">
+                                        <div class="inputbox">
+                                            <span>Last Name</span>
+                                            <input type="text" placeholder="Ex. Peter">
+                                        </div>
+                                        <div class="inputbox">
+                                            <span>Email</span>
+                                            <input type="email" placeholder="Ex. JohnPeter@gmail.com">
+                                        </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Info</h3>
+                        <div class="infobox">
+                            <span><ion-icon name="location-outline"></ion-icon></span>
+                            <p>BIT,SATHY,TAMIL NADU</p>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="mail-open-outline"></ion-icon></span>
+                            <a href="mailto:vaishalsureshkumar22@gmail.com">vaishalsureshkumar22@gmail.com</a>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="logo-linkedin"></ion-icon></span>
+                            <a href="https://www.linkedin.com/in/vaishal-as">Linkedin</a>
+                        </div>
+                        <div class="infobox">
+                            <span><ion-icon name="logo-github"></ion-icon></span>
+                            <a href="https://github.com/vaishal-as">Github</a>
+                        </div>  
+                        <div class="infobox">
+                            <span><ion-icon name="call-outline"></ion-icon></span>
+                            <a href="tel:+919787423600">+919787423600</a>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.7398735537813!2d77.2726179749437!3d11.498679288697446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba921f77ec45de1%3A0x80bb28a281f91227!2sBannari%20Amman%20Institute%20of%20Technology%20-%20College%20Staff%20Quarters!5e0!3m2!1sen!2sin!4v1687793448372!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <script>
+        const list=document.querySelectorAll('.list');
+        function activatelink(){
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');   
+        }
+        list.forEach((item) => item.addEventListener('click',activatelink));
+        const sign_up_btn=document.querySelector('#sign-up-btn');
+        const sign_in_btn=document.querySelector('#sign-in-btn');
+        const form_container=document.querySelector('.login');
+
+        sign_up_btn.addEventListener('click',() => {
+            form_container.classList.add('sign-up-mode');
+        })
+        sign_in_btn.addEventListener('click',() => {
+            form_container.classList.remove('sign-up-mode');
+    })
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Exercise</title>
+    <link rel="stylesheet" href="/css/add.css">
+</head>
+<body>
+    <h1>Add Your Exersice Here</h1>
+    <form action="/record" method="post">
+        <input type="text" placeholder="Username" name="username">
+        <select name="myselect">
+            <option disabled selected value> -- select an option -- </option>
+            <option value="Cycling">Cycling</option>
+            <option value="Jocking">Jocking</option>
+            <option value="Walking">Walking</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Aerobics">Aerobics</option>
+            <option value="Dance">Dance</option>
+            <option value="Running">Running</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Stretching">Stretching</option>
+            <option value="Pushups">Pushups</option>
+        </select>
+        <input type="text" placeholder="Weight during exersice in Kg" name="weight">
+        <input type="text" placeholder="Total Time ex.'00:15:00'" name="ttime">
+        <input type="text" placeholder="Date ex.'2023-07-03" name="date">
+        <input type="text" placeholder="Starting Time ex.'00:15:00'" name="stime">
+        <button>Save</button>
+    </form>
+</body>
+</html>
